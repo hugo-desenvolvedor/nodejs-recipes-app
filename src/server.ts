@@ -1,5 +1,6 @@
 import express from 'express';
 import routes from './routes';
+import 'dotenv/config';
 
 const app = express();
 app.use('/', routes);
@@ -7,7 +8,9 @@ app.use('/', routes);
 routes.get('/recipes', (request, response) => {
   const { i } = request.query;
 
-  return response.json({ ingredients: i });
+  return response.json({
+    ingredients: i,
+  });
 });
 
 app.listen(3333, () => {
