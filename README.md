@@ -8,6 +8,8 @@ Install yarn dependency package manager following the
 To install the dependencies, run `yarn install`
 
 ## Environment variables
+* RECIPE_PUPPY_API_URL: endpoint to Recipe Puppy API
+* GIPHY_API_URL: endpoint to Giphy API
 * GIPHY_API_KEY: key to access the Giphy. You need roll up in https://developers.giphy.com/
 * APP_API_URL: the default endpoint. For example, in the local environment the value is http://localhost:3333
 

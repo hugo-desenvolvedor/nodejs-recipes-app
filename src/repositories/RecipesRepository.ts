@@ -1,17 +1,17 @@
-interface Recipe {
+interface IRecipe {
   title: string;
   ingredients: Array<string>;
   link: string;
   gif: string;
 }
 
-interface Response {
+interface IResponse {
   keywords: Array<string>;
-  recipes: Recipe[];
+  recipes: IRecipe[];
 }
 
 class RecipesRepository {
-  private response: Response;
+  private response: IResponse;
 
   constructor() {
     this.response = {
