@@ -1,9 +1,12 @@
 import express from 'express';
+import routes from './routes';
 
 const app = express();
+app.use('/', routes);
 
-app.get('/recipes', (request, response) => {
+routes.get('/recipes', (request, response) => {
   const { i } = request.query;
+
   return response.json({ ingredients: i });
 });
 
