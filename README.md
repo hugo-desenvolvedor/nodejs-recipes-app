@@ -16,4 +16,3 @@ To install the dependencies, run `yarn install`
 
 ## Running
 To execute the project, run `yarn dev:server`
-
