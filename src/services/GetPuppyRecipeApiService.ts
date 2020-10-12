@@ -43,7 +43,7 @@ class GetPuppyRecipeApiService {
       (result: { title: string; ingredients: Array<string>; href: string }) => {
         return {
           title: result.title,
-          ingredients: result.ingredients.toString().split(','),
+          ingredients: result.ingredients.toString().split(',').sort(),
           link: result.href,
           gif: '',
         };
