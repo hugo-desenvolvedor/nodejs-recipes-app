@@ -16,3 +16,6 @@ To install the dependencies, run `yarn install`
 
 ## Running
 To execute the project, run `yarn dev:server`
+
+# Unit tests
+To execute the unit tests, run `yarn test`

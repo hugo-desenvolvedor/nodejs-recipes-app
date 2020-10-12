@@ -13,30 +13,45 @@ interface IRecipe {
 
 interface IResponse {
   keywords: Array<string>;
-  recipes: IRecipe[];
+  recipes: Array<IRecipe>;
 }
 
 class GetPuppyRecipeApiService {
   public async execute({ keywords }: IRequest): Promise<IResponse> {
-    const apiResponse = await axios.get(
+    if (!keywords) {
+      throw new Error('Ingredients not found');
+    }
+
+    const keywordsList = keywords
+      .toString()
+      .split(',')
+      .sort((a, b) => (a > b ? 1 : -1));
+
+    if (keywordsList.length > 3) {
+      throw new Error('Maximum 3 ingredients');
+    }
+
+    const recipePuppyResponse = await axios.get(
       `${process.env.RECIPE_PUPPY_API_URL}?i=${keywords}`,
     );
 
-    if (!apiResponse.data.results) {
+    if (!recipePuppyResponse.data.results) {
       throw new Error('No results in Puppy Recipe api');
     }
 
-    const recipes = apiResponse.data.results.map(result => {
-      return {
-        title: result.title,
-        ingredients: result.ingredients,
-        link: result.href,
-        gif: '',
-      };
-    });
+    const recipes = recipePuppyResponse.data.results.map(
+      (result: { title: string; ingredients: Array<string>; href: string }) => {
+        return {
+          title: result.title,
+          ingredients: result.ingredients.toString().split(','),
+          link: result.href,
+          gif: '',
+        };
+      },
+    );
 
     return {
-      keywords: keywords.toString().split(','),
+      keywords: keywordsList,
       recipes,
     };
   }
