@@ -26,5 +26,8 @@ If you rather you can use docker to run the project.
 ### Build docker image
 To build image, run `docker-compose build --no-cache`
 
-### Running the image
-To execute the project run `docker-compose up`
+### Running the development container
+To execute the project run `docker-compose up dev`
+
+### Running the unit tests container
+To execute the project run `docker-compose up test`

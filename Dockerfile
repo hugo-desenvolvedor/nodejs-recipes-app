@@ -12,8 +12,4 @@ RUN yarn
  
 COPY --chown=node:node . .
  
-EXPOSE 3333 
- 
-RUN chmod 755 ./init.sh
-ENTRYPOINT ["./init.sh"]
-
+EXPOSE 3333

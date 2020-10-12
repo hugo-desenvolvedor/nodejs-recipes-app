@@ -7,14 +7,6 @@ describe('Get Puppy RecipeApiService', () => {
     getPuppyRecipeApiService = new GetPuppyRecipeApiService();
   });
 
-  it('should get the recipes from API', async () => {
-    const puppyRecipes = await getPuppyRecipeApiService.execute({
-      keywords: 'onion,tomato,banana',
-    });
-
-    await expect(puppyRecipes.keywords).toEqual(['banana', 'onion', 'tomato']);
-  });
-
   it('should not get the recipes without ingredients', async () => {
     await expect(
       getPuppyRecipeApiService.execute({ keywords: '' }),
@@ -27,5 +19,13 @@ describe('Get Puppy RecipeApiService', () => {
         keywords: 'onion,tomato,banana,potato',
       }),
     ).rejects.toBeInstanceOf(Error);
+  });
+
+  it('should get the recipes from API', async () => {
+    const puppyRecipes = await getPuppyRecipeApiService.execute({
+      keywords: 'onion,tomato,banana',
+    });
+
+    expect(puppyRecipes.keywords).toEqual(['banana', 'onion', 'tomato']);
   });
 });

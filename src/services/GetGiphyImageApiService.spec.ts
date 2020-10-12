@@ -23,22 +23,18 @@ describe('Get Puppy RecipeApiService', () => {
       puppyRecipes,
     );
 
-    await expect(puppyRecipesWithGif.keywords).toEqual(['onion', 'tomato']);
+    expect(puppyRecipesWithGif.keywords).toEqual(['onion', 'tomato']);
 
-    await expect(puppyRecipesWithGif.recipes[0].title).toEqual(
+    expect(puppyRecipesWithGif.recipes[0].title).toEqual(
       'Dehydrating Tomatoes',
     );
 
-    await expect(puppyRecipesWithGif.recipes[0].ingredients).toEqual([
-      'tomato',
-    ]);
+    expect(puppyRecipesWithGif.recipes[0].ingredients).toEqual(['tomato']);
 
-    await expect(puppyRecipesWithGif.recipes[0].link).toEqual(
+    expect(puppyRecipesWithGif.recipes[0].link).toEqual(
       'http://www.recipezaar.com/Dehydrating-Tomatoes-325795',
     );
 
-    await expect(puppyRecipesWithGif.recipes[0].gif).toEqual(
-      'https://media2.giphy.com/media/xT9Igj9Vh5mjLl6ZW0/giphy.gif?cid=b46597can11gzg4vz9e8m34wxwglxntqsocdgpbfbddzvhlb&rid=giphy.gif',
-    );
+    expect(puppyRecipesWithGif.recipes[0].gif).not.toBe('');
   });
 });
